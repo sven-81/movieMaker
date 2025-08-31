@@ -6,13 +6,17 @@ fun main() {
     println("Starting Game:" + System.lineSeparator())
     println(Genre.THRILLER.name)
 
-    val emma = Actor("emma", "thompson", listOf(Genre.DRAMA, Genre.THRILLER, Genre.FANTASY))
-    val steven = Director("steven", "spielberg", emma)
-    val firstMovie = Movie("superfilm", steven, emma, 90000, Genre.DRAMA)
+    val gameData = GameData
+    val mainActor = gameData.getRandomActor()
+    val director = gameData.directors.random()
+    val firstMovie = Movie("superfilm", director, mainActor, 90000, Genre.DRAMA)
 
-/*    println(Gson().toJson(emma))
-    println(Gson().toJson(steven))
-    println(Gson().toJson(firstMovie))*/
+    println(Gson().toJson(mainActor))
+    println(Gson().toJson(director))
 
-    println("${firstMovie.title}, Gesamtkosten: ${firstMovie.costs}")
+    /*    println(Gson().toJson(emma))
+        println(Gson().toJson(steven))
+        println(Gson().toJson(firstMovie))*/
+
+    firstMovie.produce()
 }
