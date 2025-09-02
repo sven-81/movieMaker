@@ -11,7 +11,7 @@ class Movie(
 ) {
     private val ratings = mutableListOf<Double>()
 
-    val costs = director.salary + mainActor.salary + budget
+    val costs: Double = (director.salary + mainActor.salary + budget).toDouble()
 
     var revenue = 0
         private set
