@@ -39,6 +39,6 @@ fun main() {
     var totalScore = 0
     for (rating in GameData.ratingStrategies){
         totalScore += rating.getScore(firstMovie)
-        println("totalScore: " + totalScore)
+        println("totalScore: " + totalScore + " - Bewertung: " + rating.getInfoText(firstMovie))
     }
 }
