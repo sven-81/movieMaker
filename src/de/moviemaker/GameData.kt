@@ -19,4 +19,11 @@ object GameData {
 
     fun getRandomGenres(): List<Genre> = listOf(genres.random(), genres.random())
     fun getRandomActor(): Actor = actors.random()
+
+    val ratingStrategies = listOf<Rating>(
+        RatingBasedOnExperience(),
+        RatingBasedOnMatchingCast(),
+        RandomRating(),
+        Reviewer("Gregor", "Grimmig")
+    )
 }

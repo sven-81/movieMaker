@@ -17,4 +17,8 @@ class Actor(
             salary += 20000
         }
     }
+
+    override fun increaseSalary(){
+        salary = (salary *1.1).toInt()
+    }
 }

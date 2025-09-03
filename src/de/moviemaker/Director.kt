@@ -15,4 +15,8 @@ class Director(
             skill.currentSkill += 1
         }
     }
+
+    override fun increaseSalary() {
+        salary += 100
+    }
 }

@@ -2,7 +2,7 @@ package de.moviemaker
 
 import kotlin.random.Random
 
-open class Person(
+abstract class Person(
     val firstName: String,
     val lastName: String
 ) {
@@ -20,4 +20,6 @@ open class Person(
     override fun toString(): String {
         return "$firstName $lastName"
     }
+
+    abstract fun increaseSalary()
 }
