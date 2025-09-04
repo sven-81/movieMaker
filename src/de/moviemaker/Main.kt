@@ -1,44 +1,110 @@
 package de.moviemaker
 
-import com.google.gson.Gson
-
 fun main() {
     println("Starting Game:" + System.lineSeparator())
-    println(Genre.THRILLER.name)
 
-    val gameData = GameData
-    val mainActor = gameData.getRandomActor()
-    val director = gameData.directors.random()
+    var lastMovie: Movie? = null
 
+    fun format(double: Double): String = "%.2f".format(double)
 
-    //  val mainActor = Actor("E", "T", listOf(Genre.THRILLER, Genre.DRAMA))
-    //  val director = Director("S", "P", mainActor)
+    gameloop@ do {
+        if (lastMovie != null) {
+            println("Letzter Film: $lastMovie")
+        }
 
-    val firstMovie = Movie("superfilm", director, mainActor, 90000, Genre.DRAMA)
+        println(System.lineSeparator() + "Ihr Vermögen: ${format(GameData.moneyOnAccount)}")
+        println("p=Film produzieren *** s=Statistik *** q=Quit")
 
-   /* val output = "$mainActor hier"
-    println(output)
-    val output2 = "$director hier"
-    println(output2)*/
+        val input = readlnOrNull() ?: "none"
+        when (input.lowercase()) {
+            "p" -> {
+                lastMovie = produceNewMovie()
+                GameData.addMovie(lastMovie)
+            }
 
-/*    val rating1: Rating = RatingBasedOnMatchingCast()
-    val rating2: Rating = RatingBasedOnExperience()
+            "s" -> statistics(lastMovie)
+            "q" -> break@gameloop
+        }
+    } while (true)
+}
 
-    println(rating1.getInfoText(firstMovie))
-    println(rating2.getInfoText(firstMovie))*/
+fun statistics(movie: Movie?) {
+    println("Statistik")
+    println("Bester Film: ${GameData.bestMovie?.title ?: "Keiner!"}")
 
-/*    println(Gson().toJson(mainActor))
-    println(Gson().toJson(director))*/
-
-    /*    println(Gson().toJson(emma))
-        println(Gson().toJson(steven))
-        println(Gson().toJson(firstMovie))*/
-
-    firstMovie.produce()
-
-    var totalScore = 0
-    for (rating in GameData.ratingStrategies){
-        totalScore += rating.getScore(firstMovie)
-        println("totalScore: " + totalScore + " - Bewertung: " + rating.getInfoText(firstMovie))
+    if (movie != null) {
+        println(movie.title)
+        println("Einnahmen: ${movie.revenue}")
+        println("Ausgaben: ${movie.costs}")
+        println("Gewinn: ${movie.profit}")
     }
 }
+
+fun produceNewMovie(): Movie {
+    println("Neuen Film produzieren.")
+    println("Titel eingeben:")
+
+    val title = readlnOrNull() ?: "Kein Titel"
+    val actor = chooseActor()
+    val director = chooseDirector()
+    val genre = chooseGenre()
+
+    println("Bitte Budget eingeben:")
+
+    val budget = try {
+        readlnOrNull()?.toInt() ?: 0
+    } catch (exception: NumberFormatException) {
+        100_000
+    }
+
+    val movie = Movie(title, director, actor, budget, genre)
+    movie.produce()
+
+    GameData.moneyOnAccount += movie.profit
+
+    return movie
+}
+
+fun chooseActor(): Actor {
+    println("Bitte wähle einen Schauspieler")
+    return choosePerson(GameData.actors) as Actor
+}
+
+fun chooseDirector(): Director {
+    println("Bitte wähle einen Regisseur")
+    return choosePerson(GameData.directors) as Director
+}
+
+fun choosePerson(personList: List<Person>): Person {
+    for ((index, person) in personList.withIndex()) {
+        println("$index = $person Gehalt: ${person.salary}")
+    }
+    var choice: Int? = null
+    do {
+        val input = readln()
+        try {
+            choice = input.toInt()
+        } catch (exception: Exception) {
+            println("Bitte gib eine gültige Nummer ein.")
+        }
+    } while (choice == null || choice !in personList.indices)
+    return personList[choice]
+}
+
+fun chooseGenre(): Genre {
+    val genres = GameData.genres
+    println("Bitte wähle ein Genre")
+
+    for ((index, genre) in genres.withIndex()) {
+        println("$index = $genre")
+    }
+
+    return try {
+        val i = readlnOrNull()?.toInt() ?: 0
+        genres[i]
+    } catch (exception: Exception) {
+        GameData.getRandomGenres()
+    } as Genre
+}
+
+

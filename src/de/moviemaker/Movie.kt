@@ -10,10 +10,12 @@ class Movie(
     val genre: Genre
 ) {
     private val ratings = mutableListOf<Double>()
-
     val costs: Double = (director.salary + mainActor.salary + budget).toDouble()
 
     var revenue = 0
+        private set
+
+    var profit = 0
         private set
 
     fun format(double: Double): String = "%.2f".format(double)
