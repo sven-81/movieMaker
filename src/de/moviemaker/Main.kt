@@ -9,7 +9,7 @@ fun main() {
 
     gameloop@ do {
         if (lastMovie != null) {
-            println("Letzter Film: $lastMovie")
+            println("Letzter Film: ${lastMovie.title}")
         }
 
         println(System.lineSeparator() + "Ihr Vermögen: ${format(GameData.moneyOnAccount)}")

@@ -1,5 +1,5 @@
-# Gradle Wrapper
 GRADLE := ./gradlew
+JAVA := java
 
 .PHONY: all build run clean
 
@@ -13,6 +13,11 @@ build:
 # Main-Klasse ausführen
 run:
 	$(GRADLE) run
+
+# Jar erstellen und ausführen
+shadow:
+	$(GRADLE) shadowJar
+	$(JAVA) -jar build/libs/movieMaker-all.jar
 
 # Build-Ordner bereinigen
 clean:
