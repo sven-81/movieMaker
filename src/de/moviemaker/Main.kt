@@ -37,6 +37,8 @@ fun statistics(movie: Movie?) {
         println("Einnahmen: ${movie.revenue}")
         println("Ausgaben: ${movie.costs}")
         println("Gewinn: ${movie.profit}")
+
+        println(GameData.outputStrategy.analyze(movie))
     }
 }
 
@@ -61,6 +63,10 @@ fun produceNewMovie(): Movie {
     movie.produce()
 
     GameData.moneyOnAccount += movie.profit
+
+    println(GameData.outputStrategy.introduction())
+    println("Gewinn: ${movie.profit}")
+    println(GameData.outputStrategy.description(movie))
 
     return movie
 }

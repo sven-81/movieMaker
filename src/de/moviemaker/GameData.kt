@@ -11,6 +11,7 @@ object GameData {
     val genres = Genre.entries.toTypedArray()
 
     val ratingStrategies = mutableListOf<Rating>()
+    var outputStrategy: OutputStrategy = SmartOutput()
 
     init {
         actors.add(Actor("Emma", "Thompson", getRandomGenres()))
