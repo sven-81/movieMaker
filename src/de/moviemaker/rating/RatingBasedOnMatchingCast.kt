@@ -1,4 +1,6 @@
-package de.moviemaker
+package de.moviemaker.rating
+
+import de.moviemaker.Movie
 
 class RatingBasedOnMatchingCast : Rating {
     override fun getScore(movie: Movie): Int {

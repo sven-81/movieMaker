@@ -1,5 +1,6 @@
-package de.moviemaker
+package de.moviemaker.rating
 
+import de.moviemaker.Movie
 import kotlin.random.Random
 
 class RandomRating : Rating {

@@ -1,5 +1,10 @@
 package de.moviemaker
 
+import de.moviemaker.rating.RandomRating
+import de.moviemaker.rating.Rating
+import de.moviemaker.rating.RatingBasedOnExperience
+import de.moviemaker.rating.RatingBasedOnMatchingCast
+
 object GameData {
     var bestMovie: Movie? = null
         private set
@@ -12,6 +17,8 @@ object GameData {
 
     val ratingStrategies = mutableListOf<Rating>()
     var outputStrategy: OutputStrategy = SmartOutput()
+
+    val reviewer: Reviewer by lazy { Reviewer("Gregor", "Grimmig") }
 
     init {
         actors.add(Actor("Emma", "Thompson", getRandomGenres()))
@@ -28,16 +35,18 @@ object GameData {
             RatingBasedOnExperience(),
             RatingBasedOnMatchingCast(),
             RandomRating(),
-            Reviewer("Gregor", "Grimmig")
+            reviewer
         )
 
     }
+
     fun getRandomGenres(): List<Genre> = listOf(genres.random(), genres.random())
 
     fun getRandomActor(): Actor = actors.random()
 
     fun addMovie(movie: Movie) {
         movies.add(movie)
+        println(reviewer.getInfoText(movie))
 
         if (movie.revenue > (bestMovie?.revenue ?: 0)) {
             bestMovie = movie

@@ -1,4 +1,6 @@
-package de.moviemaker
+package de.moviemaker.rating
+
+import de.moviemaker.Movie
 
 class RatingBasedOnExperience : Rating {
     override fun getScore(movie: Movie): Int {
