@@ -1,4 +1,4 @@
-package de.moviemaker
+package main.kotlin.de.moviemaker
 
 enum class Genre {
     ACTION,

@@ -1,4 +1,4 @@
-package de.moviemaker.comment
+package main.kotlin.de.moviemaker.comment
 
 class RandomComment : Comment {
     override fun goodMovie(): String = goodBadPairs.random().first

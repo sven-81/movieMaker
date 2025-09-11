@@ -1,10 +1,10 @@
-package de.moviemaker
+package main.kotlin.de.moviemaker
 
-import de.moviemaker.comment.Comment
-import de.moviemaker.comment.PraiseDecorator
-import de.moviemaker.comment.RandomComment
-import de.moviemaker.comment.StarDecorator
-import de.moviemaker.rating.Rating
+import main.kotlin.de.moviemaker.comment.Comment
+import main.kotlin.de.moviemaker.comment.PraiseDecorator
+import main.kotlin.de.moviemaker.comment.RandomComment
+import main.kotlin.de.moviemaker.comment.StarDecorator
+import main.kotlin.de.moviemaker.rating.Rating
 
 class Reviewer(firstName: String, lastName: String) : Person(firstName, lastName), Rating {
     private val preferredActor = GameData.getRandomActor()

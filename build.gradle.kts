@@ -11,14 +11,15 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib"))
     implementation("com.google.code.gson:gson:2.11.0") // for json debug view
+    testImplementation(kotlin("test"))
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
 }
 
-sourceSets {
-    main {
-        kotlin.srcDir("src")
-    }
-}
 
 application {
-    mainClass.set("de.moviemaker.MainKt")
+    mainClass.set("main.kotlin.de.moviemaker.MainKt")
+}
+
+tasks.test {
+    useJUnitPlatform()
 }

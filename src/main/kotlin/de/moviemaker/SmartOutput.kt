@@ -1,4 +1,4 @@
-package de.moviemaker
+package main.kotlin.de.moviemaker
 
 class SmartOutput : OutputStrategy {
     override fun introduction(): String = "Wir präsentieren den neuesten Film."

@@ -1,4 +1,4 @@
-package de.moviemaker.comment
+package main.kotlin.de.moviemaker.comment
 
 class StarDecorator(val stars: String, val base: Comment) : Comment {
     override fun goodMovie(): String = stars + base.goodMovie() + stars

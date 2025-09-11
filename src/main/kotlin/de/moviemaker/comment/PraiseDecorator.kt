@@ -1,4 +1,4 @@
-package de.moviemaker.comment
+package main.kotlin.de.moviemaker.comment
 
 class PraiseDecorator(val decoratedComment: Comment) : Comment by decoratedComment {
     private val praise = listOf("Wow!", "Super!", "Klasse!", "yay!")

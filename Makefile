@@ -22,3 +22,7 @@ shadow:
 # Build-Ordner bereinigen
 clean:
 	$(GRADLE) clean
+
+# tests ausführen
+test:
+	$(GRADLE) test

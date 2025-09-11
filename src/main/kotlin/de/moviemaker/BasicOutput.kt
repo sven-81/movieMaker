@@ -1,4 +1,4 @@
-package de.moviemaker
+package main.kotlin.de.moviemaker
 
 class BasicOutput : OutputStrategy {
     override fun introduction(): String = "*** Neuer Film fertig ***"

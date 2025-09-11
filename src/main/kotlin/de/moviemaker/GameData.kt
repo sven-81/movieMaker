@@ -1,9 +1,9 @@
-package de.moviemaker
+package main.kotlin.de.moviemaker
 
-import de.moviemaker.rating.RandomRating
-import de.moviemaker.rating.Rating
-import de.moviemaker.rating.RatingBasedOnExperience
-import de.moviemaker.rating.RatingBasedOnMatchingCast
+import main.kotlin.de.moviemaker.rating.RandomRating
+import main.kotlin.de.moviemaker.rating.Rating
+import main.kotlin.de.moviemaker.rating.RatingBasedOnExperience
+import main.kotlin.de.moviemaker.rating.RatingBasedOnMatchingCast
 
 object GameData {
     var bestMovie: Movie? = null
@@ -16,9 +16,15 @@ object GameData {
     val genres = Genre.entries.toTypedArray()
 
     val ratingStrategies = mutableListOf<Rating>()
-    var outputStrategy: OutputStrategy = SmartOutput()
+    var outputStrategy: OutputStrategy =
+        SmartOutput()
 
-    val reviewer: Reviewer by lazy { Reviewer("Gregor", "Grimmig") }
+    val reviewer: Reviewer by lazy {
+        Reviewer(
+            "Gregor",
+            "Grimmig"
+        )
+    }
 
     init {
         actors.add(Actor("Emma", "Thompson", getRandomGenres()))

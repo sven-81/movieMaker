@@ -1,4 +1,4 @@
-package de.moviemaker
+package main.kotlin.de.moviemaker
 
 fun main() {
     println("Starting Game:" + System.lineSeparator())

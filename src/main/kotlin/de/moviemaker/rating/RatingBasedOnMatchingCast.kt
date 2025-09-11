@@ -1,6 +1,6 @@
-package de.moviemaker.rating
+package main.kotlin.de.moviemaker.rating
 
-import de.moviemaker.Movie
+import main.kotlin.de.moviemaker.Movie
 
 class RatingBasedOnMatchingCast : Rating {
     override fun getScore(movie: Movie): Int {
