@@ -27,7 +27,7 @@ class ActorTest {
     @Test
     fun testIncreaseSalary() {
         actor.increaseSalary()
-        assertEquals(1100, actor.salary)  // 50000 * 1.1
+        assertEquals(1100, actor.salary)
     }
 
     @Test
